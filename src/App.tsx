@@ -47,25 +47,28 @@ const App: React.FC = () => {
   return (
     <>
       <input
-        type="number"
+        type="text"
         name="amount"
         min={1}
         onChange={onAmountChange}
         value={amount}
+        data-testid="amount-input"
       />
       <button
+        data-testid="plus-button"
         onClick={() => !!amount && addTransaction(Number(amount), "income")}
       >
         +
       </button>
       <button
+        data-testid="minus-button"
         onClick={() => !!amount && addTransaction(Number(amount), "expenses")}
       >
         -
       </button>
 
       {transactions.map((transaction) => (
-        <div key={transaction.id}>
+        <div key={transaction.id} data-testid={`transaction-${transaction.id}`}>
           <span>{transaction.detail}</span>
           <span>{transaction.amount}</span>
         </div>
