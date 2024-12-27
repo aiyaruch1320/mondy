@@ -61,12 +61,14 @@ const App: React.FC = () => {
           data-testid="amount-input"
         />
         <button
+          style={{ background: "green" }}
           data-testid="plus-button"
           onClick={() => !!amount && addTransaction(Number(amount), "income")}
         >
           +
         </button>
         <button
+          style={{ background: "red" }}
           data-testid="minus-button"
           onClick={() => !!amount && addTransaction(Number(amount), "expenses")}
         >
