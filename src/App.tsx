@@ -59,6 +59,7 @@ const App: React.FC = () => {
           onChange={onAmountChange}
           value={amount}
           data-testid="amount-input"
+          placeholder="Enter amount"
         />
         <button
           style={{ background: "green" }}
