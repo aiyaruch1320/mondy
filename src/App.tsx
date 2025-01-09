@@ -1,89 +1,13 @@
-import React, { useState } from "react";
-import "./App.css";
+import React from "react";
 
-interface Transaction {
-  id: number;
-  detail: string;
-  amount: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-const App: React.FC = () => {
-  const [amount, setAmount] = useState<string>("");
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    {
-      id: 1,
-      detail: "Salary",
-      amount: 1000,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ]);
-
-  const addTransaction = (amount: number, type: "income" | "expenses") => {
-    const netAmount = type === "income" ? amount : -amount;
-    const newTransaction: Transaction = {
-      id: transactions.length + 1,
-      detail: "New Transaction",
-      amount: netAmount,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-    setTransactions([...transactions, newTransaction]);
-    setAmount("");
-  };
-
-  const onAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const numberValue = Number(value);
-    if (value === "" || isNaN(numberValue) || numberValue < 1) {
-      setAmount("");
-      return;
-    }
-    setAmount(value);
-  };
-
+function App() {
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <input
-          type="text"
-          name="amount"
-          min={1}
-          onChange={onAmountChange}
-          value={amount}
-          data-testid="amount-input"
-          placeholder="Enter amount"
-        />
-        <button
-          style={{ background: "green" }}
-          data-testid="plus-button"
-          onClick={() => !!amount && addTransaction(Number(amount), "income")}
-        >
-          +
-        </button>
-        <button
-          style={{ background: "red" }}
-          data-testid="minus-button"
-          onClick={() => !!amount && addTransaction(Number(amount), "expenses")}
-        >
-          -
-        </button>
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
       </div>
-      {transactions.map((transaction) => (
-        <div key={transaction.id} data-testid={`transaction-${transaction.id}`}>
-          <span>{transaction.detail}</span>
-          <span>{transaction.amount}</span>
-        </div>
-      ))}
-    </>
+    </div>
   );
-};
+}
 
 export default App;
