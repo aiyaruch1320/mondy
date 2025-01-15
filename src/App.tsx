@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TransactionForm } from "./components/TransactionFrom";
+import { TransactionTable } from "./components/TransactionTable";
 import { Transaction } from "./types/transaction";
 
 function App() {
@@ -19,9 +20,7 @@ function App() {
         <div className="mb-8">
           <TransactionForm onSubmit={addTransaction} />
         </div>
-        {transactions.map((transaction) => {
-          return <>{transaction.description}</>;
-        })}
+        <TransactionTable transactions={transactions} />
       </div>
     </div>
   );
