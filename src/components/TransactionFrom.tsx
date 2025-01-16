@@ -45,7 +45,7 @@ export function TransactionForm({ onSubmit }: TransactionFormProps) {
             onChange={(e) => setAmount(e.target.value)}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
             placeholder="0.00"
-            step={1}
+            step={0.01}
             min={0}
             required
           />
