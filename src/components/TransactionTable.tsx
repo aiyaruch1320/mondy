@@ -4,6 +4,7 @@ import TransactionRow from "./TransactionRow";
 
 interface TransactionTableProps {
   transactions: Transaction[];
+  onUpdate: (id: string, transaction: Partial<Transaction>) => void;
 }
 
 const transactionColumns = [
@@ -13,7 +14,7 @@ const transactionColumns = [
   { key: "action", title: "Action", align: "center" },
 ];
 
-function TransactionTable({ transactions }: TransactionTableProps) {
+function TransactionTable({ transactions, onUpdate }: TransactionTableProps) {
   return (
     <>
       <div className="overflow-x-auto">
@@ -32,7 +33,7 @@ function TransactionTable({ transactions }: TransactionTableProps) {
           </thead>
           <tbody className="divide-y devide-gray-200">
             {transactions.map((transaction) => (
-              <TransactionRow transaction={transaction} />
+              <TransactionRow transaction={transaction} onUpdate={onUpdate} />
             ))}
           </tbody>
         </table>

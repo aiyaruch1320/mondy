@@ -14,13 +14,22 @@ function App() {
     setTransactions((prev) => [transaction, ...prev]);
   };
 
+  const updateTransaction = (id: string, transaction: Partial<Transaction>) => {
+    setTransactions((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, ...transaction } : t))
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="mb-8">
           <TransactionForm onSubmit={addTransaction} />
         </div>
-        <TransactionTable transactions={transactions} />
+        <TransactionTable
+          transactions={transactions}
+          onUpdate={updateTransaction}
+        />
       </div>
     </div>
   );
