@@ -13,9 +13,13 @@ function TransactionRow({ transaction, onUpdate }: TransactionRowProps) {
   const [editedDescription, setEditedDescription] = useState(
     transaction.description
   );
+  const [editedAmount, setEditedAmount] = useState(
+    transaction.amount.toFixed(2)
+  );
 
   const handleSave = () => {
-    onUpdate(transaction.id, { description: editedDescription });
+    const amount = parseFloat(editedAmount);
+    onUpdate(transaction.id, { amount, description: editedDescription });
     setIsEditing(false);
   };
 
@@ -51,7 +55,19 @@ function TransactionRow({ transaction, onUpdate }: TransactionRowProps) {
           transaction.amount
         )}`}
       >
-        {transaction.amount.toFixed(2)}
+        {isEditing ? (
+          <>
+            <input
+              type="number"
+              value={editedAmount}
+              onChange={(e) => setEditedAmount(e.target.value)}
+              className="w-full text-right rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              step={0.01}
+            />
+          </>
+        ) : (
+          transaction.amount.toFixed(2)
+        )}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
         <div className="flex justify-end space-x-2">
