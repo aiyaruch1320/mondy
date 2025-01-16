@@ -14,7 +14,7 @@ const transactionColumns = [
   { key: "action", title: "Action", align: "center" },
 ];
 
-export function TransactionTable({ transactions }: TransactionTableProps) {
+function TransactionTable({ transactions }: TransactionTableProps) {
   const getAmountColor = (amount: number) => {
     return amount >= 0 ? "text-green-600" : "text-red-600";
   };
@@ -70,3 +70,5 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
     </>
   );
 }
+
+export default TransactionTable;

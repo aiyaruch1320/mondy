@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TransactionForm } from "./components/TransactionFrom";
-import { TransactionTable } from "./components/TransactionTable";
+import TransactionTable from "./components/TransactionTable";
 import { Transaction } from "./types/transaction";
 
 function App() {
